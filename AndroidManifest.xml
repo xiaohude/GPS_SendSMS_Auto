@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.gpsimformation"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="10" />
+    
+    <uses-permission 
+        android:name="android.permission.CALL_PHONE"/>
+    <uses-permission 
+        android:name="android.permission.SEND_SMS"/>
+    <uses-permission 
+        android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/x3"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.gpsimformation.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        <!--把该接收器的优先级设置为1000，大于系统自带监听短信广播的广播接收器-->
+        <receiver android:name="com.example.gpsimformation.SMSBroadcastReceiver"
+            >
+   			
+  			 <intent-filter android:priority="1000"> 
+   			 <!--短信的类型为:android.provider.Telephony.SMS_RECEIVED-->
+   			 	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+  			 </intent-filter>
+  		</receiver> 
+  		
+        
+        <receiver android:name="com.example.gpsimformation.CallBroadcastReceiver"  android:priority="10000" android:permission="android.permission.READ_PHONE_STATE">
+            <intent-filter>
+  			  <action android:name="android.intent.action.PHONE_STATE" />
+   			</intent-filter>
+  		</receiver>
+  		
+        
+    </application>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />  
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission> 
+
+ 	<!--配置与短信相关的权限-->
+ 	<uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
+ 	<uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+ 	
+ 	<!--配置GPS自动开启所需的相关的权限-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> 
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> 
+	<uses-permission android:name="android.permission.INTERNET" />
+ 	
+ 	
+ 	
+</manifest>

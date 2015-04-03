@@ -1,70 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gpsimformation"
+    package="com.smarttiger.gpsimformation"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="10" />
     
-    <uses-permission 
-        android:name="android.permission.CALL_PHONE"/>
-    <uses-permission 
-        android:name="android.permission.SEND_SMS"/>
-    <uses-permission 
-        android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />  
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> 
+ 	<!--配置与短信相关的权限-->
+ 	<uses-permission android:name="android.permission.RECEIVE_SMS"/>	
+ 	<uses-permission android:name="android.permission.SEND_SMS"/>		
+ 	<!--允许程序读取或写入系统设置 -->	
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- 这个权限用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<!-- 这个权限用于访问GPS定位-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<!-- 用于读取手机当前的状态-->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<!-- 访问网络，网络定位需要上网-->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- SD卡读取权限，用户写入离线定位数据-->
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+	<!--允许应用读取低级别的系统日志文件 -->
+	<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+	
+	<!-- 添加广告额外需要的权限 -->
+	<uses-permission android:name="android.permission.GET_TASKS"/>
 
     <application
+        android:name="SmartTiger"
         android:allowBackup="true"
-        android:icon="@drawable/x3"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.gpsimformation.MainActivity"
-            android:label="@string/app_name" >
+            android:name="com.smarttiger.gpsimformation.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.LAUNCHER" />
+				//下面代码可隐藏应用图标，意思是只能由那个包下的那个类启动。
+				<!--data android:host="SMSBroadcastReceiver|CallBroadcastReceiver" android:scheme="com.smarttiger.gpsimformation" />
+				-->
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.smarttiger.gpsimformation.about"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.smarttiger.gpsimformation.SetView"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
         
+        <service 
+            android:name="com.smarttiger.gpsimformation.MyService" 
+            android:enabled="true" >           
+        </service> 
+            
         
-        <!--把该接收器的优先级设置为1000，大于系统自带监听短信广播的广播接收器-->
-        <receiver android:name="com.example.gpsimformation.SMSBroadcastReceiver"
+        <!--把该接收器的优先级设置为1000，大于系统自带监听短信广播的广播接收器,2147483647：最大的int整数-->
+        <receiver android:name="com.smarttiger.gpsimformation.SMSBroadcastReceiver"
             >
    			
-  			 <intent-filter android:priority="1000"> 
+  			 <intent-filter android:priority="2147483647"> 
    			 <!--短信的类型为:android.provider.Telephony.SMS_RECEIVED-->
    			 	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
   			 </intent-filter>
   		</receiver> 
   		
         
-        <receiver android:name="com.example.gpsimformation.CallBroadcastReceiver"  android:priority="10000" android:permission="android.permission.READ_PHONE_STATE">
+        <receiver 
+            android:name="com.smarttiger.gpsimformation.CallBroadcastReceiver"  
+            android:priority="10000" 
+            android:permission="android.permission.READ_PHONE_STATE">
             <intent-filter>
   			  <action android:name="android.intent.action.PHONE_STATE" />
    			</intent-filter>
   		</receiver>
   		
+        <service 
+            android:name="com.baidu.location.f" 
+            android:enabled="true" 
+            android:process=":remote">           
+        </service>        
+  		<meta-data
+	        android:name="com.baidu.lbsapi.API_KEY"
+	        android:value="UmdZTZOUGOEYnhGZwPiZISQT" />
+  		<activity
+            android:name="com.smarttiger.gpsimformation.MyBaiduMap"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:label="百度地图"  >
+        </activity>
         
+  		<!--  
+  		<meta-data android:name="APP_ID" android:value="80b27567fde0a74a99c149fead053490 "/> 
+		<meta-data android:name="APP_PID" android:value="default"/>
+        -->
     </application>
-    <uses-permission android:name="android.permission.RESTART_PACKAGES" />  
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission> 
-
- 	<!--配置与短信相关的权限-->
- 	<uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
- 	<uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
- 	
- 	<!--配置GPS自动开启所需的相关的权限-->
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> 
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> 
-	<uses-permission android:name="android.permission.INTERNET" />
- 	
- 	
- 	
+    
+    
+    
+	 
+	 
 </manifest>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background1"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/topbackground1"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/imageButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_prev"
+            android:onClick="onBackToMain" >
+        </Button>
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设置"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" >
+        </TextView>
+        
+        <Button
+            android:id="@+id/topBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="保存"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:onClick="onSave">
+        </Button>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical" >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layoutcorners"
+            android:layout_margin="10dp"
+            android:orientation="vertical" >
+        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:background="@drawable/topbackground1"
+		        android:padding="5dp"
+		        android:gravity="center"
+		        android:text="自动返回位置信息给对方的触发条件："
+		        android:textColor="#FFFFFF"
+		        android:textSize="18dp" />
+		    
+		    <RadioGroup 
+		        android:id="@+id/conditionRadio"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        >
+		        <RadioButton 
+		            android:id="@+id/missedcallRB"
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content"
+		        	android:text="我未接电话时触发"
+		        	android:textColor="@android:color/black"
+		            />
+		        <RadioButton 
+		            android:id="@+id/callRB"
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content"
+		        	android:text="我已接未接都触发"
+		        	android:textColor="@android:color/black"
+		            />
+		        <RadioButton 
+		            android:id="@+id/noCallRB"
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content"
+		        	android:text="都不触发"
+		        	android:textColor="@android:color/black"
+		            />
+		    </RadioGroup> 
+	    
+	    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layoutcorners"
+            android:layout_margin="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="缓存对方地址最大数量："
+                android:textSize="20sp"
+                android:textColor="#090909" />
+            <EditText 
+                android:id="@+id/numEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+				android:numeric="integer"
+                android:hint="20"
+                android:textSize="18sp" 
+                />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layoutcorners"
+            android:layout_margin="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="清空地址缓存记录："
+                android:textSize="20sp"
+                android:textColor="#090909" />
+            <Button
+	            android:id="@+id/topBtn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:background="@drawable/topbtn1"
+	            android:padding="7dp"
+	            android:text="清空"
+	            android:textColor="#FFFFFF"
+	            android:textSize="18dp"
+	            android:onClick="onClean">
+	        </Button>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layoutcorners"
+            android:layout_margin="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="保留位置信息到短信箱："
+                android:textSize="20sp"
+                android:textColor="#090909" />
+
+            <CheckBox
+                android:id="@+id/isSaveSMSBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" >
+
+	        </CheckBox>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

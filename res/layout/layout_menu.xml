@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingBottom="80dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/item1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginRight="20dp" >
+
+            <ImageView
+                android:id="@+id/one"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/img_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="使用方法"
+                android:textColor="#f0f0f0"
+                android:textSize="20sp" />
+            <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/arrow_grey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/roleType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+            
+            <TextView 
+                android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+		        android:text="使用者角色类型："
+                android:textColor="#f0f0f0"
+                android:textSize="20sp"
+                />
+            <RadioGroup 
+                android:id="@+id/roleRadio"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                >
+                <RadioButton 
+                    android:id="@+id/roleRadio1"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:checked="true"
+		            android:text="家长孩子"
+                	android:textSize="18sp"
+                    />
+                <RadioButton 
+                    android:id="@+id/roleRadio2"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:text="情侣爱人"
+                	android:textSize="18sp"
+                    />
+                <RadioButton 
+                    android:id="@+id/roleRadio3"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:text="闺蜜基友"
+                	android:textSize="18sp"
+                    />
+            </RadioGroup>
+
+            
+        </LinearLayout>
+        
+
+        <LinearLayout
+            android:id="@+id/item3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/three"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/img_3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="设置"
+                android:textColor="#f0f0f0"
+                android:textSize="20sp" />
+            
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/arrow_grey" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

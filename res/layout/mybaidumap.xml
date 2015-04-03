@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/topbackground1"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/imageButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_prev"
+            android:onClick="OnBack"
+            android:textColor="#FFFFFF" >
+        </Button>
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="定位"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btnCoordinate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="原短信查询"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" 
+            android:onClick="onCoordinate">
+        </Button>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="gone"
+        >             
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="纬度:"
+            android:textColor="#262626"
+            android:textSize="18dp" >
+        </TextView>
+        <EditText 
+            android:id="@+id/latitudeEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="39.915963"
+            android:layout_marginRight="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="经度:"
+            android:textColor="#262626"
+            android:textSize="18dp" >
+        </TextView>
+        <EditText 
+            android:id="@+id/lontitudeEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="116.403937"
+            android:layout_marginRight="3dp"
+            />
+        
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="查询"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" >
+        </Button>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/smsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchLayout"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="gone"
+        >             
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="原短信:"
+            android:textColor="#262626"
+            android:textSize="18dp" >
+        </TextView>
+        <EditText 
+            android:id="@+id/smsEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:hint="Lat(39.91615)\nLon(116.403757)"
+            android:selectAllOnFocus="true"
+            android:layout_marginRight="3dp"
+            />
+        <Button
+            android:id="@+id/btnPaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="粘贴"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" >
+        </Button>
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="查询"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" >
+        </Button>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/smsLayout"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        >
+        
+        
+        <TextView
+            android:id="@+id/textView0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="位置信息："
+            android:textColor="#262626"
+            android:textSize="18dp" 
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/locationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="#262626"
+            android:textSize="18dp" >
+        </TextView>
+        
+        
+        <Button
+            android:id="@+id/btnMyLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/topbtn1"
+            android:padding="7dp"
+            android:text="我的位置"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" 
+            android:onClick="OnMyLocation">
+        </Button>
+        
+    </LinearLayout>
+    
+    
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relativeLayout2"
+        android:clickable="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="110dip"
+        android:background="#D000"
+        android:minWidth="100dip"
+        android:orientation="vertical"
+        android:padding="2dp" 
+        android:visibility="gone">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="定位icon" >
+
+            <RadioButton
+                android:id="@+id/defaulticon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="默认图标" >
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/customicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自定义图标" >
+            </RadioButton>
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dip" 
+        android:visibility="gone"/>
+
+</RelativeLayout>
